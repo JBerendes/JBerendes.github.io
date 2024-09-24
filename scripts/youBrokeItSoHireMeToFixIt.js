@@ -37,6 +37,10 @@ window.addEventListener("keydown", event => {
     elements.forEach(element => {
       element.style.transform = "";
     });
+    const dialog = document.querySelector("dialog");
+    if (dialog) {
+      dialog.remove();
+    }
   }
 });
 
@@ -55,3 +59,29 @@ function yesICanFixIt() {
   }, 5000);
 }
 
+// a button that requires 3 clicks to trigger the dangerQuake function
+let clicks = 0;
+// const button = document.createElement("button");
+// const elements = document.body.querySelectorAll(".under-construction");
+// button.innerHTML = "Click me 3 times!";
+// button.addEventListener("click", () => {
+//   clicks++;
+//   if (clicks === 3) {
+//     dangerQuake();
+//     clicks = 0;
+//   }
+// });
+
+function attemptToEnterADangerZone() {
+  clicks++;
+  if (clicks === 1) {
+    alert("Nope! It's a mess in there! You can try but I wouldn't recommend it.");
+  }
+  if (clicks === 2) {
+    alert("Seriously, it's dangerous! You could break something. Don't try it again.");
+  }
+  if (clicks === 3) {
+    dangerQuake();
+    clicks = 0;
+  }
+}
