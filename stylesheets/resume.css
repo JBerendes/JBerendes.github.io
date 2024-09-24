@@ -1,0 +1,177 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Montserrat";
+  font-size: 16px;
+}
+
+#resume {
+  /* color: #000000; */
+  font-size: 0.9em;
+  font-style: normal;
+}
+
+body a, body .pdf-print {
+  /* color: red; */
+  text-decoration: none;
+}
+
+.smaller {
+  font-size: 0.83em;
+}
+
+.finished div.ul {
+  margin: 0 0 0 1.2em;
+  padding: 0;
+  list-style: none;
+}
+
+.content div.ul {
+  margin: 0 0 0 1.2em;
+  padding: 0;
+  list-style: none;
+}
+
+p.title {
+  line-height: 1em;
+  margin: 0 0 0.25em 0;
+  border-bottom: 1px solid #000;
+}
+
+.resume-core {
+  margin-bottom: 1em;
+}
+.resume-core .font-size-slight-decrease {
+  font-size: 0.9em;
+}
+.resume-core .ul {
+  font-size: 0.83em;
+}
+.resume-core .core-body, .resume-core .project {
+  margin-bottom: 0.75em;
+}
+.resume-core .core-body {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+}
+.resume-core header {
+  line-height: 1em;
+  margin: 0 0 0.5em 0;
+  border-bottom: 1px solid #000;
+}
+
+.core-content {
+  width: 72%;
+  padding-right: 20px;
+}
+
+.core-content-skills, .core-content-education {
+  width: 50%;
+  font-size: 0.86em;
+}
+
+.core-sidebar {
+  font-size: 0.92em;
+}
+
+.company-name-occupation, .project-header {
+  margin-bottom: 0.25em;
+  display: block;
+}
+
+section.resume-core.todo ul {
+  font-size: 2em;
+}
+
+.company-url {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.page > footer {
+  text-align: center;
+  display: none;
+}
+
+.pdfName {
+  display: none;
+}
+
+.min-w-96 {
+  min-width: 24rem;
+}
+
+.max-w-half {
+  max-width: 50%;
+}
+
+.w-4-5 {
+  width: 80%;
+}
+
+.w-1-5 {
+  width: 20%;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+@page {
+  .print {
+    size: 21cm 29.7cm;
+    margin: 1cm;
+    font-size: 0.2em;
+  }
+}
+@page :left {
+  .print {
+    margin: 2cm 3cm 2cm 2cm;
+  }
+}
+@page :right {
+  .print {
+    margin: 2cm 2cm 2cm 3cm;
+  }
+}
+.print html, .print body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.print .page {
+  page-break-before: always;
+  height: 100%;
+  position: relative;
+}
+.print .page:first-of-type {
+  page-break-before: avoid;
+}
+.print .page header h2 {
+  margin-top: 0;
+}
+.print .page > footer {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 0.5em;
+  border-top: 1px solid #eee;
+}
