@@ -49,10 +49,12 @@ function cleanUp() {
 function yesICanFixIt() {
   setTimeout(() => {
     const dialog = document.createElement("dialog");
-    dialog.innerHTML = `<div class="p-8 text-center">
-      <p>Now look at this mess! Hire me and I'll fix it!</p>
+    dialog.innerHTML = `
+    <div class="p-8 text-center">
+      <p>Now look at this mess! Hire me and I'll fix it! 4</p>
       <a class="px-4" target="_blank" href="https://www.linkedin.com/in/jakeberendes">Jake Berendes on LinkedIn</a>
     </div>
+    <brick-breaker-game></brick-breaker-game>
     `;
     document.body.appendChild(dialog);
     dialog.showModal();
