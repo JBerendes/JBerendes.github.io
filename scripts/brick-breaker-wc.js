@@ -18,9 +18,11 @@ class BrickBreakerGame extends HTMLElement {
 
       // Create a canvas element
       const canvas = document.createElement('canvas');
-      canvas.width = 480;
-      canvas.height = 320;
       canvas.id = 'gameCanvas';
+
+      // Set canvas dimensions based on the viewport size
+      canvas.width = Math.min(window.innerWidth, 480);
+      canvas.height = Math.min(window.innerHeight, 320);
 
       // Append the canvas to the shadow DOM
       shadow.appendChild(canvas);
@@ -57,7 +59,6 @@ class BrickBreakerGame extends HTMLElement {
       const brickOffsetTop = 30;
       const brickOffsetLeft = 30;
 
-
       // use brickRowCount and brickColumnCount to create a 2D array of bricks
       const bricks = [];
       for (let r = 0; r < brickRowCount; r++) {
@@ -67,8 +68,6 @@ class BrickBreakerGame extends HTMLElement {
           }
       }
 
-
-
       // Paddle movement
       let rightPressed = false;
       let leftPressed = false;
@@ -77,13 +76,15 @@ class BrickBreakerGame extends HTMLElement {
       this.shadowRoot.addEventListener("keydown", keyDownHandler, false);
       this.shadowRoot.addEventListener("keyup", keyUpHandler, false);
       this.shadowRoot.addEventListener("mousemove", mouseMoveHandler, false);
+      this.shadowRoot.addEventListener("touchstart", touchStartHandler, false);
+      this.shadowRoot.addEventListener("touchmove", touchMoveHandler, false);
+      this.shadowRoot.addEventListener("touchend", touchEndHandler, false);
 
       // Focus the shadow DOM to receive keyboard events
       this.shadowRoot.tabIndex = 0;
       this.shadowRoot.querySelector('canvas').focus();
 
       function keyDownHandler(e) {
-          console.log(e.key);
           if (e.key === "Right" || e.key === "ArrowRight") {
               rightPressed = true;
           } else if (e.key === "Left" || e.key === "ArrowLeft") {
@@ -104,7 +105,23 @@ class BrickBreakerGame extends HTMLElement {
         if (relativeX > 0 && relativeX < canvas.width) {
             paddleX = relativeX - paddleWidth / 2;
         }
-    }
+      }
+
+      function touchStartHandler(e) {
+        e.preventDefault();
+      }
+
+      function touchMoveHandler(e) {
+        const touch = e.touches[0];
+        const relativeX = touch.clientX - canvas.getBoundingClientRect().left;
+        if (relativeX > 0 && relativeX < canvas.width) {
+            paddleX = relativeX - paddleWidth / 2;
+        }
+      }
+
+      function touchEndHandler(e) {
+        e.preventDefault();
+      }
 
       // Drawing functions
       function drawBall() {
@@ -149,11 +166,11 @@ class BrickBreakerGame extends HTMLElement {
                   if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                       dy = -dy;
                       b.status = 0;
-                  }
-                  if(livePaddle) {
-                    // send partiallyCleanUp
-                    partiallyCleanUp();
-                    livePaddle = false;
+                      if(livePaddle) {
+                        // send partiallyCleanUp
+                        partiallyCleanUp();
+                        livePaddle = false;
+                      }
                   }
               }
           }
@@ -175,7 +192,6 @@ class BrickBreakerGame extends HTMLElement {
           }
       }
 
-
       function draw() {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           drawBricks();
@@ -183,8 +199,6 @@ class BrickBreakerGame extends HTMLElement {
           drawPaddle();
           collisionDetection();
           checkAllBricksBroken();
-
-
 
           // Ball movement
           if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
@@ -217,8 +231,6 @@ class BrickBreakerGame extends HTMLElement {
                 // document.location.reload();
               }
           }
-
-
 
           x += dx;
           y += dy;
