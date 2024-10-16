@@ -21,7 +21,7 @@ class BrickBreakerGame extends HTMLElement {
       canvas.id = 'gameCanvas';
 
       // Set canvas dimensions based on the viewport size
-      canvas.width = Math.min(window.innerWidth, 480);
+      canvas.width = Math.min(window.innerWidth-80, 480);
       canvas.height = Math.min(window.innerHeight, 320);
 
       // Append the canvas to the shadow DOM
@@ -39,7 +39,7 @@ class BrickBreakerGame extends HTMLElement {
 
       // Paddle properties
       const paddleHeight = 10;
-      const paddleWidth = 75;
+      const paddleWidth = canvas.width / 8;
       let paddleX = (canvas.width - paddleWidth) / 2;
       let livePaddle = false;
 
@@ -51,13 +51,15 @@ class BrickBreakerGame extends HTMLElement {
       let dy = -2;
 
       // Brick properties
+      // need to consider the canvas width
       const brickRowCount = 2;
       const brickColumnCount = 5;
-      const brickWidth = 75;
       const brickHeight = 20;
       const brickPadding = 10;
       const brickOffsetTop = 30;
       const brickOffsetLeft = 30;
+      const brickWidth = (canvas.width - brickOffsetLeft*2 - ((brickColumnCount-1)*10)) / brickColumnCount;
+
 
       // use brickRowCount and brickColumnCount to create a 2D array of bricks
       const bricks = [];
@@ -177,6 +179,19 @@ class BrickBreakerGame extends HTMLElement {
         }
       }
 
+      function resetGame() {
+          x = canvas.width / 2;
+          y = canvas.height - 30;
+          dx = 2;
+          dy = -2;
+          paddleX = (canvas.width - paddleWidth) / 2;
+          for (let r = 0; r < brickRowCount; r++) {
+              for (let c = 0; c < brickColumnCount; c++) {
+                  bricks[r][c].status = 1;
+              }
+          }
+      }
+
       function checkAllBricksBroken() {
           let allBricksBroken = true;
           for (let r = 0; r < brickRowCount; r++) {
@@ -189,6 +204,7 @@ class BrickBreakerGame extends HTMLElement {
           }
           if (allBricksBroken) {
             cleanUp();
+            resetGame();
           }
       }
 

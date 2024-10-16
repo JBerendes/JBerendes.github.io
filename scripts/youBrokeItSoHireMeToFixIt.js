@@ -66,10 +66,11 @@ function yesICanFixIt() {
     const dialog = document.createElement("dialog");
     dialog.innerHTML = `
     <div class="p-8 text-center">
-      <p>Now look at this mess! Hire me and I'll fix it! 4</p>
+      <p>Now look at this mess! Hire me and I'll fix it!</p>
       <a class="px-4" target="_blank" href="https://www.linkedin.com/in/jakeberendes">Jake Berendes on LinkedIn</a>
     </div>
     <brick-breaker-game></brick-breaker-game>
+    <div class="justify-center"><ruby class="p-2">v2.1.2<rt>build</rt></ruby</div>
     `;
     document.body.appendChild(dialog);
     dialog.showModal();
