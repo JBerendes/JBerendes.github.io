@@ -33,6 +33,21 @@ window.addEventListener("keydown", event => {
   }
 });
 
+function partiallyCleanUp() {
+  const elements = document.body.querySelectorAll("*");
+  // only get elements that have a transform set
+  // map elements with a transform to an array
+  const elementsWithTransform = Array.from(elements).filter(element => {
+    return element.style.transform;
+  });
+  // get the first half of the elements with a transform
+  const half = Math.ceil(elementsWithTransform.length / 10);
+  const halfElements = Array.from(elementsWithTransform).slice(0, half);
+  halfElements.forEach(element => {
+    element.style.transform = "";
+  });
+}
+
 function cleanUp() {
   localStorage.removeItem("youBrokeIt");
   const elements = document.body.querySelectorAll("*");
