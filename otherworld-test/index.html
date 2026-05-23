@@ -53,6 +53,9 @@
 
         scene.appendChild(room);
 
+        let nearestPortal = null;
+        const portals = [];
+
         for (const p of manifest.portals) {
           const portal = document.createElement("a-entity");
           portal.setAttribute("position", p.position.join(" "));
@@ -77,7 +80,34 @@
           });
 
           scene.appendChild(portal);
+          portals.push({ element: portal, target: p.target, pos: p.position });
         }
+
+        function getDistance(a, b) {
+          return Math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2);
+        }
+
+        scene.addEventListener("tick", () => {
+          const rigPos = rig.getAttribute("position");
+          let closest = null;
+          let minDist = Infinity;
+
+          for (const p of portals) {
+            const dist = getDistance([rigPos.x, rigPos.y, rigPos.z], p.pos);
+            if (dist < minDist) {
+              minDist = dist;
+              closest = p;
+            }
+          }
+
+          nearestPortal = minDist < 3 ? closest : null;
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if ((e.key === "e" || e.key === "E" || e.key === "Enter") && nearestPortal) {
+            window.location.assign(nearestPortal.target);
+          }
+        });
       }
 
       boot().catch(console.error);
