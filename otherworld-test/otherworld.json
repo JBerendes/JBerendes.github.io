@@ -1,0 +1,33 @@
+{
+  "world": {
+    "id": "jberendes-external-test",
+    "title": "JBerendes External World",
+    "author": "J Berendes",
+    "version": "0.1.0",
+    "theme": "liminal-return"
+  },
+  "spawn": {
+    "position": [0, 1.6, -6.5],
+    "rotation": [0, 180, 0]
+  },
+  "rooms": [
+    {
+      "id": "main-room",
+      "type": "gallery",
+      "layout": "corridor",
+      "environment": {
+        "fog": "#182235"
+      },
+      "pieces": []
+    }
+  ],
+  "portals": [
+    {
+      "id": "return-to-hallway",
+      "label": "Return To Drift Hallway",
+      "target": "https://localhost:5173/hallway.html?from=external",
+      "position": [0, 1.6, -11.6],
+      "transition": "corridor"
+    }
+  ]
+}
