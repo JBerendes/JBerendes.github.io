@@ -25,7 +25,7 @@
     {
       "id": "return-to-hallway",
       "label": "Return To Drift Hallway",
-      "target": "https://localhost:5173/hallway.html?from=external",
+      "target": "http://localhost:5173/hallway.html?from=external",
       "position": [0, 1.6, -11.6],
       "transition": "corridor"
     }
