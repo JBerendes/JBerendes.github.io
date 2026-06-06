@@ -1,0 +1,45 @@
+{
+  "paintMaterial": {
+    "roughness": 0.58,
+    "metalness": 0.02
+  },
+  "roomShell": {
+    "floorMirrorEnabled": true,
+    "floorMirrorResolution": 512,
+    "floorMirrorBlur": 3.2,
+    "floorMirrorTint": 0.82,
+    "floorMirrorBrushStrength": 0.28,
+    "floorMirrorBrushScale": 110,
+    "floorMirrorOverlayOpacity": 0.68,
+    "floorWoodGrainEnabled": true,
+    "floorWoodGrainColor": "#2a1408",
+    "floorWoodGrainOpacity": 0.2,
+    "floorColor": "#70401f",
+    "floorRoughness": 0.18,
+    "floorMetalness": 0.0,
+    "ceilingColor": "#9aa0a6",
+    "ceilingRoughness": 0.88,
+    "ceilingMetalness": 0.02,
+    "wallNorthSouthColor": "#191970",
+    "wallEastWestColor": "#14145a",
+    "wallRoughness": 0.78,
+    "wallMetalness": 0.03
+  },
+  "lighting": {
+    "ambientColor": "#cfd8e8",
+    "ambientIntensity": 1.15,
+    "roomPointIntensity": 0.35,
+    "paintingSpotColor": "#fff4de",
+    "paintingSpotIntensity": 20,
+    "paintingSpotAngle": 38,
+    "paintingSpotPenumbra": 0.85,
+    "paintingSpotDistance": 16,
+    "paintingSpotDecay": 1.8,
+    "paintingSpotOffset": [0, 2.8, 3.8]
+  },
+  "movement": {
+    "cameraBobEnabled": false,
+    "cameraBobAmplitude": 0.15,
+    "cameraBobFrequency": 2.1
+  }
+}

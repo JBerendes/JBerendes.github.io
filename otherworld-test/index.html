@@ -3,114 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Otherworld Test</title>
+    <title>JBerendes Otherworld</title>
     <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
     <style>
-      html, body { margin: 0; height: 100%; background: #0c0f16; }
+      body { margin: 0; background: #0d1220; }
     </style>
+    <script type="module" crossorigin src="./assets/main-CqHBlEqG.js"></script>
   </head>
-  <body>
-    <a-scene id="scene" renderer="colorManagement: true"></a-scene>
-
-    <script>
-      async function boot() {
-        const res = await fetch("./otherworld.json", { cache: "no-store" });
-        if (!res.ok) throw new Error("Failed to load otherworld.json");
-        const manifest = await res.json();
-        const scene = document.getElementById("scene");
-
-        const rig = document.createElement("a-entity");
-        rig.setAttribute("position", manifest.spawn.position.join(" "));
-        rig.setAttribute("rotation", manifest.spawn.rotation.join(" "));
-        const cam = document.createElement("a-camera");
-        cam.setAttribute("look-controls", "pointerLockEnabled: true");
-        cam.setAttribute("wasd-controls", "acceleration: 18");
-        rig.appendChild(cam);
-        scene.appendChild(rig);
-
-        const sky = document.createElement("a-sky");
-        sky.setAttribute("color", "#1a2236");
-        scene.appendChild(sky);
-
-        const room = document.createElement("a-entity");
-        const floor = document.createElement("a-plane");
-        floor.setAttribute("rotation", "-90 0 0");
-        floor.setAttribute("width", "24");
-        floor.setAttribute("height", "24");
-        floor.setAttribute("color", "#38445c");
-        room.appendChild(floor);
-
-        const lightA = document.createElement("a-light");
-        lightA.setAttribute("type", "ambient");
-        lightA.setAttribute("intensity", "0.9");
-        room.appendChild(lightA);
-
-        const lightB = document.createElement("a-light");
-        lightB.setAttribute("type", "point");
-        lightB.setAttribute("position", "0 4 0");
-        lightB.setAttribute("intensity", "1.2");
-        room.appendChild(lightB);
-
-        scene.appendChild(room);
-
-        let nearestPortal = null;
-        const portals = [];
-
-        for (const p of manifest.portals) {
-          const portal = document.createElement("a-entity");
-          portal.setAttribute("position", p.position.join(" "));
-          portal.setAttribute("data-target", p.target);
-
-          const ring = document.createElement("a-ring");
-          ring.setAttribute("position", "0 0.6 0");
-          ring.setAttribute("radius-inner", "0.7");
-          ring.setAttribute("radius-outer", "1.0");
-          ring.setAttribute("color", "#9dd9ff");
-          portal.appendChild(ring);
-
-          const label = document.createElement("a-text");
-          label.setAttribute("value", p.label);
-          label.setAttribute("align", "center");
-          label.setAttribute("position", "0 -0.5 0");
-          label.setAttribute("width", "4");
-          portal.appendChild(label);
-
-          portal.addEventListener("click", () => {
-            window.location.assign(p.target);
-          });
-
-          scene.appendChild(portal);
-          portals.push({ element: portal, target: p.target, pos: p.position });
-        }
-
-        function getDistance(a, b) {
-          return Math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2);
-        }
-
-        scene.addEventListener("tick", () => {
-          const rigPos = rig.getAttribute("position");
-          let closest = null;
-          let minDist = Infinity;
-
-          for (const p of portals) {
-            const dist = getDistance([rigPos.x, rigPos.y, rigPos.z], p.pos);
-            if (dist < minDist) {
-              minDist = dist;
-              closest = p;
-            }
-          }
-
-          nearestPortal = minDist < 3 ? closest : null;
-        });
-
-        document.addEventListener("keydown", (e) => {
-          if ((e.key === "e" || e.key === "E" || e.key === "Enter") && nearestPortal) {
-            window.location.assign(nearestPortal.target);
-          }
-        });
-      }
-
-      boot().catch(console.error);
-    </script>
+  <body data-manifest="./otherworld.json">
+    <a-scene renderer="colorManagement: true"></a-scene>
   </body>
 </html>

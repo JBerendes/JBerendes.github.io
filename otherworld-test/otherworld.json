@@ -1,33 +1,80 @@
 {
   "world": {
-    "id": "jberendes-external-test",
+    "id": "jberendes-external",
     "title": "JBerendes External World",
     "author": "J Berendes",
     "version": "0.1.0",
-    "theme": "liminal-return"
+    "theme": "liminal-return",
+    "trust": {
+      "allowCurrentOrigin": true,
+      "allowHttpLocalhost": true,
+      "allowedOrigins": [
+        "http://localhost:5173"
+      ]
+    },
+    "environment": {
+      "sky": {
+        "type": "equirectangular",
+        "src": "./sky/starter.jpg",
+        "rotationY": 0
+      },
+      "roomShell": {
+        "ceilingVisible": false
+      }
+    },
+    "identity": {
+      "algorithm": "Ed25519",
+      "publicKey": "MCowBQYDK2VwAyEAhyrgnJp/KsKX4YdXoHy1HCt25VWPz5GVr6jXHFL3b48=",
+      "publicKeyFormat": "spki",
+      "keyId": "jberendes-external"
+    },
+    "signature": "qe6YgKfiam9bTerOPVjU+1KXE/+KNaESTPQACz2RLfkceI6Gws8+b+yisMNRx3icHJtzhcmUm3nr+VDI1jhICA=="
   },
   "spawn": {
-    "position": [0, 1.6, -6.5],
-    "rotation": [0, 180, 0]
+    "position": [
+      0,
+      1.63,
+      -6.2
+    ],
+    "rotation": [
+      0,
+      180,
+      0
+    ]
   },
-  "rooms": [
+  "spaces": [
     {
-      "id": "main-room",
-      "type": "gallery",
-      "layout": "corridor",
-      "environment": {
-        "fog": "#182235"
-      },
-      "pieces": []
+      "id": "external-gallery",
+      "name": "Welcome Space",
+      "hint": "gallery",
+      "layoutMode": "auto",
+      "art": [
+        {
+          "id": "alien-brain",
+          "type": "image",
+          "title": "Alien Brain",
+          "src": "./art/dubjart-alien-brain.jpg"
+        },
+        {
+          "id": "danse-macabre",
+          "type": "image",
+          "title": "Danse Macabre",
+          "src": "./art/dubjart-danse-macabre.jpg"
+        },
+        {
+          "id": "elk-bones",
+          "type": "image",
+          "title": "Elk Bones",
+          "src": "./art/dubjart-elk-bones.jpg"
+        },
+        {
+          "id": "joyride",
+          "type": "image",
+          "title": "Joyride",
+          "src": "./art/dubjart-joyride.jpg"
+        }
+      ]
     }
   ],
-  "portals": [
-    {
-      "id": "return-to-hallway",
-      "label": "Return To Drift Hallway",
-      "target": "http://localhost:5173/hallway.html?from=external",
-      "position": [0, 1.6, -11.6],
-      "transition": "corridor"
-    }
-  ]
+  "portals": []
 }

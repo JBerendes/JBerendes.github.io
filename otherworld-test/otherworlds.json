@@ -1,0 +1,32 @@
+[
+  {
+    "id": "signal-gallery",
+    "label": "Signal Gallery",
+    "target": "http://localhost:5173/",
+    "manifest": "http://localhost:5173/world-a.json",
+    "transition": "tunnel",
+    "position": [
+      11.6,
+      1.6,
+      0
+    ],
+    "sourceWorldIds": [
+      "jberendes-external"
+    ]
+  },
+  {
+    "id": "afterlight-archive",
+    "label": "Afterlight Archive",
+    "target": "http://localhost:5173/world-b.html",
+    "manifest": "http://localhost:5173/world-b.json",
+    "transition": "corridor",
+    "position": [
+      -11.6,
+      1.6,
+      0
+    ],
+    "sourceWorldIds": [
+      "jberendes-external"
+    ]
+  }
+]
