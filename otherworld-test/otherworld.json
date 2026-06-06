@@ -24,11 +24,11 @@
     },
     "identity": {
       "algorithm": "Ed25519",
-      "publicKey": "MCowBQYDK2VwAyEAUt5RBQ3lTDm4nM5C/i4Xey/J8cJ6R4XqXvSv8jFnVic=",
+      "publicKey": "MCowBQYDK2VwAyEAn0J0x5gFlfuH0H3Lw3cbagY1w5KjmsYoBIX4EW8Vfeg=",
       "publicKeyFormat": "spki",
       "keyId": "jberendes-external"
     },
-    "signature": "j19oPRoajByGXguN/0Hn6qNlg7krYYHoejEiRUcjSyqseiUfJrTsYekvUQ1wPyxqlUnBIi2K02fyfkM9I5+JBw=="
+    "signature": "/9wBEWUMFidupb2Yz9FZwH8Y/WmgpNHmtZTHQMXN1uHjkJENRAEq2W9o2CuuVqQ5PAo6E/k84i6+FzT46zYEAQ=="
   },
   "spawn": {
     "position": [
